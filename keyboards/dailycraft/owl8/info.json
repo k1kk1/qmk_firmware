@@ -8,6 +8,9 @@
         "pid": "0x0008",
         "device_version": "0.0.1"
     },
+    "features": {
+      "encoder": true
+    },
     "encoder": {
         "rotary": [
             {"pin_a": "D4", "pin_b": "C6"},
