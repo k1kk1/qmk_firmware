@@ -72,7 +72,7 @@
 #define __LOWER_L3__ ____,____,____,____,____,____
 
 #define __LOWER_R1__ XXXX,KC_EQL,KC_PLUS,KC_ASTR,KC_PERC,KC_MINS
-#define __LOWER_R2__ KC_6,KC_7,KC_8,KC_9,KC_0,___
+#define __LOWER_R2__ KC_6,KC_7,KC_8,KC_9,KC_0,____
 #define __LOWER_R3__ ____,____,____,____,____,____
 
 #define __LOWER_T3__ QK_BOOT,____,____,KC_DEL,____,____
