@@ -7,11 +7,19 @@
     "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
+        "backlight": false,
+        "midi": false,
+        "unicode": false,
+        "bluetooth": false,
+        "audio": false,
+        "fauxclicky": false,
+        "hd44780": false,
         "command": false,
         "console": false,
         "extrakey": true,
         "mousekey": true,
-        "nkro": true
+        "nkro": false,
+        "oled": true
     },
     "url": "",
     "usb": {
@@ -21,7 +29,7 @@
     },
     "matrix_pins": {
         "direct": [
-            ["F6", "F7", "B1", "B2", "D4", "C6", "D7", "B4"]
+            ["F4", "F6", "B1", "B2", "D4", "D7", "B4", "B5"]
         ]
     },
     "layouts": {
