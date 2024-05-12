@@ -2,6 +2,7 @@
     "manufacturer": "k1kk1",
     "keyboard_name": "key1a",
     "maintainer": "k1kk1",
+    "url": "",
     "processor": "atmega32u4",
     "bootloader": "caterina",
     "diode_direction": "COL2ROW",
@@ -21,28 +22,23 @@
         "nkro": false,
         "oled": true
     },
-    "url": "",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x7437",
         "vid": "0xDA74"
     },
     "matrix_pins": {
-        "direct": [
-            ["F4", "F6", "B1", "B2", "D4", "D7", "B4", "B5"]
-        ]
+        "cols": ["B4", "B5"],
+        "rows": ["B2", "B6"]
     },
     "layouts": {
         "LAYOUT": {
             "layout": [
-                { "matrix": [0, 0], "label": "A", "x": 0, "y": 0 },
-                { "matrix": [0, 1], "label": "B", "x": 1, "y": 0 },
-                { "matrix": [0, 2], "label": "C", "x": 2, "y": 0 },
-                { "matrix": [0, 3], "label": "D", "x": 3, "y": 0 },
-                { "matrix": [0, 4], "label": "E", "x": 4, "y": 0 },
-                { "matrix": [0, 5], "label": "F", "x": 5, "y": 0 },
-                { "matrix": [0, 6], "label": "G", "x": 6, "y": 0 },
-                { "matrix": [0, 7], "label": "H", "x": 7, "y": 0 }
+                {"matrix": [0, 0], "x": 0, "y": 0},
+                {"matrix": [0, 1], "x": 1, "y": 0},
+
+                {"matrix": [1, 0], "x": 0, "y": 1},
+                {"matrix": [1, 1], "x": 1, "y": 1}
             ]
         }
     }
