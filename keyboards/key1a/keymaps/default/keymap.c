@@ -4,26 +4,41 @@
 #include QMK_KEYBOARD_H
 #include "color.h"
 #include "rgblight.h"
+#include "lib/layer_status/layer_status.h"
 
 #define _BASE 0
 #define _LOWER 1
 #define _RAISE 2
+#define _MOUSE 3
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-      MO(1), MO(2), 
-      KC_C, KC_D,
-      KC_E,   KC_F,   KC_G,  KC_H
+      KC_A, KC_B,
+      KC_1, KC_2,
+      TO(_RAISE),   TO(_LOWER),
+      KC_G,   KC_H,
+      RGB_TOG, RGB_MOD
     ),
     [_LOWER] = LAYOUT(
-      MO(1), MO(2), 
-      KC_C, KC_D,
-      KC_E,   KC_F,   KC_G,  KC_H
+      KC_A, KC_B,
+      KC_1, KC_2,
+      TO(_RAISE),   TO(_LOWER),
+      KC_G,   KC_H,
+      RGB_TOG, RGB_MOD
     ),
     [_RAISE] = LAYOUT(
-      MO(1), MO(2), 
-      KC_C, KC_D,
-      KC_E,   KC_F,   KC_G,  KC_H
+      KC_A, KC_B,
+      KC_1, KC_2,
+      TO(_RAISE),   TO(_LOWER),
+      KC_G,   KC_H,
+      RGB_TOG, RGB_MOD
+    ),
+    [_MOUSE] = LAYOUT(
+      KC_A, KC_B,
+      KC_1, KC_2,
+      TO(_RAISE),   TO(_LOWER),
+      KC_G,   KC_H,
+      RGB_TOG, RGB_MOD
     )
 };
 
@@ -92,9 +107,50 @@ layer_state_t layer_state_set_user(layer_state_t state) {
       return state;
 };;
 
+char keylog_str[24]  = {};
+char keylogs_str[21] = {};
+int  keylogs_str_idx = 0;
+
+const char code_to_name[60] = {' ', ' ', ' ', ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'R', 'E', 'B', 'T', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ';', '\'', ' ', ',', '.', '/', ' ', ' ', ' '};
+
+void set_keylog(uint16_t keycode, keyrecord_t *record) {
+    char name = ' ';
+    if (keycode < 60) {
+        name = code_to_name[keycode];
+    }
+
+    // update keylog
+    snprintf(keylog_str, sizeof(keylog_str), "%dx%d, k%2d : %c", record->event.key.row, record->event.key.col, keycode, name);
+
+    // update keylogs
+    if (keylogs_str_idx == sizeof(keylogs_str) - 1) {
+        keylogs_str_idx = 0;
+        for (int i = 0; i < sizeof(keylogs_str) - 1; i++) {
+            keylogs_str[i] = ' ';
+        }
+    }
+
+    keylogs_str[keylogs_str_idx] = name;
+    keylogs_str_idx++;
+}
+
+const char *read_keylog(void) { return keylog_str; }
+const char *read_keylogs(void) { return keylogs_str; }
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        set_keylog(keycode, record);
+    }
+    return true;
+}
+
 
 bool oled_task_user(void) {
-    oled_write_P(PSTR("Hello World!"), false);
-    oled_write_layer_state();
+    // oled_write_P(PSTR("Hello World!"), false);
+    // oled_write_layer_state();
+    // oled_write_ln(read_keylog(), false);
+    // oled_write_ln(read_keylogs(), false);
+    render_layer_status();
     return false;
 };
+
