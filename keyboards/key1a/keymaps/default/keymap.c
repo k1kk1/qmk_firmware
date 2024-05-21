@@ -4,6 +4,7 @@
 #include QMK_KEYBOARD_H
 #include "color.h"
 #include "rgblight.h"
+#include "encoder.h"
 #include "lib/layer_status/layer_status.h"
 
 #define _BASE 0
@@ -13,32 +14,20 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-      KC_A, KC_B,
-      KC_1, KC_2,
-      TO(_RAISE),   TO(_LOWER),
-      KC_G,   KC_H,
-      RGB_TOG, RGB_MOD
+      KC_A, RGB_TOG,
+      TO(_LOWER), TO(_MOUSE)
     ),
     [_LOWER] = LAYOUT(
       KC_A, KC_B,
-      KC_1, KC_2,
-      TO(_RAISE),   TO(_LOWER),
-      KC_G,   KC_H,
-      RGB_TOG, RGB_MOD
+      TO(_RAISE), TO(_BASE)
     ),
     [_RAISE] = LAYOUT(
       KC_A, KC_B,
-      KC_1, KC_2,
-      TO(_RAISE),   TO(_LOWER),
-      KC_G,   KC_H,
-      RGB_TOG, RGB_MOD
+      TO(_MOUSE), TO(_LOWER)
     ),
     [_MOUSE] = LAYOUT(
       KC_A, KC_B,
-      KC_1, KC_2,
-      TO(_RAISE),   TO(_LOWER),
-      KC_G,   KC_H,
-      RGB_TOG, RGB_MOD
+      TO(_BASE), TO(_RAISE)
     )
 };
 
@@ -58,38 +47,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     }
     return false;
 };
-
-void oled_write_layer_state(void) {
-    oled_write_P(PSTR(" "), false);
-
-    switch (get_highest_layer(layer_state | default_layer_state)) {
-        case 0:
-            oled_write_P(PSTR("Base "), false);
-            break;
-        case 1:
-            oled_write_P(PSTR("Lower"), false);
-            break;
-        case 2:
-            oled_write_P(PSTR("Raise"), false);
-            break;
-        case 3:
-            oled_write_P(PSTR("Mouse"), false);
-            break;
-        case 4:
-            oled_write_P(PSTR("L4   "), false);
-            break;
-        case 5:
-            oled_write_P(PSTR("L5   "), false);
-            break;
-        case 6:
-            oled_write_P(PSTR("L6   "), false);
-            break;
-        default:
-            oled_write_P(PSTR("Undef"), false);
-            break;
-    }
-}
-
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
@@ -146,11 +103,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 bool oled_task_user(void) {
-    // oled_write_P(PSTR("Hello World!"), false);
-    // oled_write_layer_state();
+    render_layer_status();
     // oled_write_ln(read_keylog(), false);
     // oled_write_ln(read_keylogs(), false);
-    render_layer_status();
     return false;
 };
 
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [_BASE] = { ENCODER_CCW_CW(RGB_HUD, RGB_HUI), ENCODER_CCW_CW(KC_PGDN, KC_PGUP), ENCODER_CCW_CW(TO(_LOWER), TO(_MOUSE)) },
+    [_LOWER]  = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI), ENCODER_CCW_CW(RGB_SAD, RGB_SAI), ENCODER_CCW_CW(TO(_RAISE), TO(_BASE)) },
+    [_RAISE]  = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD), ENCODER_CCW_CW(RGB_SPD, RGB_SPI), ENCODER_CCW_CW(TO(_MOUSE), TO(_LOWER)) },
+    [_MOUSE]  = { ENCODER_CCW_CW(RGB_TOG, RGB_TOG), ENCODER_CCW_CW(KC_TRNS, KC_TRNS), ENCODER_CCW_CW(TO(_BASE), TO(_RAISE)) },
+};
