@@ -14,20 +14,20 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-      KC_A, RGB_TOG,
-      TO(_LOWER), TO(_MOUSE)
+      KC_A, KC_B, KC_C, KC_D,
+      KC_1, KC_2, TO(_LOWER), TO(_MOUSE)
     ),
     [_LOWER] = LAYOUT(
-      KC_A, KC_B,
-      TO(_RAISE), TO(_BASE)
+      KC_A, KC_B, KC_C, KC_D,
+      KC_1, KC_2, TO(_RAISE), TO(_BASE)
     ),
     [_RAISE] = LAYOUT(
-      KC_A, KC_B,
-      TO(_MOUSE), TO(_LOWER)
+      KC_A, KC_B, KC_C, KC_D,
+      KC_1, KC_2, TO(_MOUSE), TO(_LOWER)
     ),
     [_MOUSE] = LAYOUT(
-      KC_A, KC_B,
-      TO(_BASE), TO(_RAISE)
+      KC_A, KC_B, KC_C, KC_D,
+      KC_1, KC_2, TO(_BASE), TO(_RAISE)
     )
 };
 
