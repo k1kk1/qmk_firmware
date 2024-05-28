@@ -55,3 +55,12 @@ qmk new-keyboard
 
 https://github.com/qmk/qmk_firmware/blob/master/docs/isp_flashing_guide.md
 
+
+```
+❯ arm-none-eabi-gcc --version
+
+arm-none-eabi-gcc (Homebrew ARM GCC 9.5.0_2) 9.5.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```

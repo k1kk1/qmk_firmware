@@ -12,22 +12,40 @@
 #define _RAISE 2
 #define _MOUSE 3
 
+// const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+//     [_BASE] = LAYOUT(
+//       KC_A, KC_B, KC_C, KC_D,
+//       KC_1, KC_2, TO(_LOWER), TO(_MOUSE)
+//     ),
+//     [_LOWER] = LAYOUT(
+//       KC_A, KC_B, KC_C, KC_D,
+//       KC_1, KC_2, TO(_RAISE), TO(_BASE)
+//     ),
+//     [_RAISE] = LAYOUT(
+//       KC_A, KC_B, KC_C, KC_D,
+//       KC_1, KC_2, TO(_MOUSE), TO(_LOWER)
+//     ),
+//     [_MOUSE] = LAYOUT(
+//       KC_A, KC_B, KC_C, KC_D,
+//       KC_1, KC_2, TO(_BASE), TO(_RAISE)
+//     )
+// };
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
       KC_A, KC_B, KC_C, KC_D,
-      KC_1, KC_2, TO(_LOWER), TO(_MOUSE)
+      KC_1, KC_2, KC_3, KC_4
     ),
     [_LOWER] = LAYOUT(
       KC_A, KC_B, KC_C, KC_D,
-      KC_1, KC_2, TO(_RAISE), TO(_BASE)
+      KC_1, KC_2, KC_3, KC_4
     ),
     [_RAISE] = LAYOUT(
       KC_A, KC_B, KC_C, KC_D,
-      KC_1, KC_2, TO(_MOUSE), TO(_LOWER)
+      KC_1, KC_2, KC_3, KC_4
     ),
     [_MOUSE] = LAYOUT(
       KC_A, KC_B, KC_C, KC_D,
-      KC_1, KC_2, TO(_BASE), TO(_RAISE)
+      KC_1, KC_2, KC_3, KC_4
     )
 };
 

@@ -8,40 +8,30 @@
         "vid": "0xDA74"
     },
     "url": "",
-    "processor": "atmega32u4",
-    "bootloader": "caterina",
+    "processor": "RP2040",
+    "bootloader": "rp2040",
     "features": {
         "bootmagic": true,
-        "backlight": false,
-        "midi": false,
-        "unicode": false,
-        "bluetooth": false,
-        "audio": false,
-        "fauxclicky": false,
-        "hd44780": false,
-        "command": false,
-        "console": false,
-        "extrakey": true,
-        "mousekey": true,
-        "nkro": false,
+        "nkro": true,
         "rgblight": true,
         "oled": true,
         "encoder": true
     },
     "diode_direction": "COL2ROW",
     "matrix_pins": {
-        "cols": ["B2", "B6"],
-        "rows": ["D7", "E6", "B4", "B5"]
+        "cols": ["GP8", "GP9"],
+        "rows": ["GP22", "GP20", "GP23", "GP21"]
     },
     "encoder": {
         "rotary": [
-            {"pin_a": "F4", "pin_b": "F5"},
-            {"pin_a": "F6", "pin_b": "F7"},
-            {"pin_a": "B1", "pin_b": "B3"}
+            {"pin_a": "GP29", "pin_b": "GP28"},
+            {"pin_a": "GP4", "pin_b": "GP5"},
+            {"pin_a": "GP6", "pin_b": "GP7"}
         ]
     },
     "ws2812": {
-        "pin": "D3"
+        "driver": "vendor",
+        "pin": "GP11"
     },
     "rgblight": {
         "led_count": 6,
