@@ -8,7 +8,8 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17 // Specify a optional status led by GPIO number which blinks when entering the bootloader
 
 #define HAL_USE_I2C TRUE
-#define I2C_DRIVER I2CD1
-#define I2C1_SDA_PIN GP2
-#define I2C1_SCL_PIN GP3
+
+#define I2C_DRIVER I2CD0
+#define I2C1_SDA_PIN GP5
+#define I2C1_SCL_PIN GP6
 
