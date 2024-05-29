@@ -15,6 +15,9 @@
         "cols": ["GP8", "GP9"],
         "rows": ["GP22", "GP20", "GP23", "GP21"]
     },
+    "ws2812": {
+        "driver": "i2c"
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [
