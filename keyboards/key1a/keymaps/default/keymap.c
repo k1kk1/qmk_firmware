@@ -12,40 +12,22 @@
 #define _RAISE 2
 #define _MOUSE 3
 
-// const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//     [_BASE] = LAYOUT(
-//       KC_A, KC_B, KC_C, KC_D,
-//       KC_1, KC_2, TO(_LOWER), TO(_MOUSE)
-//     ),
-//     [_LOWER] = LAYOUT(
-//       KC_A, KC_B, KC_C, KC_D,
-//       KC_1, KC_2, TO(_RAISE), TO(_BASE)
-//     ),
-//     [_RAISE] = LAYOUT(
-//       KC_A, KC_B, KC_C, KC_D,
-//       KC_1, KC_2, TO(_MOUSE), TO(_LOWER)
-//     ),
-//     [_MOUSE] = LAYOUT(
-//       KC_A, KC_B, KC_C, KC_D,
-//       KC_1, KC_2, TO(_BASE), TO(_RAISE)
-//     )
-// };
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-      KC_A, KC_B, KC_C, KC_D,
-      KC_1, KC_2, KC_3, KC_4
+      KC_A, KC_B, KC_C, KC_MUTE,
+      KC_1, KC_2, KC_3, RGB_TOG
     ),
     [_LOWER] = LAYOUT(
-      KC_A, KC_B, KC_C, KC_D,
-      KC_1, KC_2, KC_3, KC_4
+      KC_A, KC_B, KC_C, KC_MUTE,
+      KC_1, KC_2, KC_3, RGB_TOG
     ),
     [_RAISE] = LAYOUT(
-      KC_A, KC_B, KC_C, KC_D,
-      KC_1, KC_2, KC_3, KC_4
+      KC_A, KC_B, KC_C, KC_MUTE,
+      KC_1, KC_2, KC_3, RGB_TOG
     ),
     [_MOUSE] = LAYOUT(
-      KC_A, KC_B, KC_C, KC_D,
-      KC_1, KC_2, KC_3, KC_4
+      KC_A, KC_B, KC_C, KC_MUTE,
+      KC_1, KC_2, KC_3, RGB_TOG
     )
 };
 
@@ -128,8 +110,8 @@ bool oled_task_user(void) {
 };
 
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [_BASE] = { ENCODER_CCW_CW(RGB_HUD, RGB_HUI), ENCODER_CCW_CW(KC_PGDN, KC_PGUP), ENCODER_CCW_CW(TO(_LOWER), TO(_MOUSE)) },
-    [_LOWER]  = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI), ENCODER_CCW_CW(RGB_SAD, RGB_SAI), ENCODER_CCW_CW(TO(_RAISE), TO(_BASE)) },
-    [_RAISE]  = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD), ENCODER_CCW_CW(RGB_SPD, RGB_SPI), ENCODER_CCW_CW(TO(_MOUSE), TO(_LOWER)) },
-    [_MOUSE]  = { ENCODER_CCW_CW(RGB_TOG, RGB_TOG), ENCODER_CCW_CW(KC_TRNS, KC_TRNS), ENCODER_CCW_CW(TO(_BASE), TO(_RAISE)) },
+    [_BASE] = { ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), ENCODER_CCW_CW(TO(_LOWER), TO(_MOUSE)) },
+    [_LOWER]  = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI), ENCODER_CCW_CW(KC_PAGE_UP, KC_PAGE_DOWN), ENCODER_CCW_CW(TO(_RAISE), TO(_BASE)) },
+    [_RAISE]  = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD), ENCODER_CCW_CW(KC_AUDIO_VOL_UP, KC_AUDIO_VOL_DOWN), ENCODER_CCW_CW(TO(_MOUSE), TO(_LOWER)) },
+    [_MOUSE]  = { ENCODER_CCW_CW(RGB_TOG, RGB_TOG), ENCODER_CCW_CW(KC_KB_VOLUME_UP, KC_KB_VOLUME_DOWN), ENCODER_CCW_CW(TO(_BASE), TO(_RAISE)) },
 };

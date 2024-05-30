@@ -24,9 +24,9 @@
     },
     "encoder": {
         "rotary": [
-            {"pin_a": "GP29", "pin_b": "GP28"},
             {"pin_a": "GP4", "pin_b": "GP5"},
-            {"pin_a": "GP6", "pin_b": "GP7"}
+            {"pin_a": "GP6", "pin_b": "GP7"},
+            {"pin_a": "GP29", "pin_b": "GP28"}
         ]
     },
     "ws2812": {
