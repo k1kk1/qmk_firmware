@@ -32,7 +32,7 @@ Enter the bootloader in 3 ways:
 git clone git@github.com:qmk/qmk_firmware.git
 cd qmk_firmware
 make git-submodule # lufa等をinstall
-brew install avr-gcc 
+brew install avr-gcc
 # 
 brew uninstall --ignore-dependencies avrdude
 brew install avrdude
@@ -63,4 +63,9 @@ arm-none-eabi-gcc (Homebrew ARM GCC 9.5.0_2) 9.5.0
 Copyright (C) 2019 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
+
+```
+sh: arm-none-eabi-ar: command not found
+brew install arm-none-eabi-binutils
 ```
