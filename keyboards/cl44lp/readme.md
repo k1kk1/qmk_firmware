@@ -10,11 +10,18 @@
 
 Make example for this keyboard (after setting up your build environment):
 
-    make cl44lp:default
+```shell
+make cl44lp:default
+make cl44lp:via
+```
 
 Flashing example for this keyboard:
 
-    make cl44lp:default:flash
+```shell
+# make cl44lp:default:flash これだと書き込みできない
+make cl44lp:default:flash
+make cl44lp:via:avrdude
+```
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
